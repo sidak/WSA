@@ -1,13 +1,15 @@
-files = dir('./laptops/*.json')
+dirname = 'laptops'
+files = dir(strcat('../raw/AmazonReviews/', dirname, '/*.json'))
 data = []
+
 for file = files'
-    json = loadjson(file.name)
-    reviews = cell2mat(json.Reviews)
-    data = cat(1, data, reviews')
+    json = loadjson(strcat('../raw/AmazonReviews/', dirname, '/', file.name));
+    reviews = cell2mat(json.Reviews);
+    data = cat(1, data, reviews');
 end
 
-scores = {data.Overall}
-reviewText = {data.Content}
+scores = {data.Overall};
+reviewText = {data.Content};
 
-save('scores.mat', 'scores')
-save('reviewText.mat', 'reviewText')
+save(strcat('../data/', dirname, '_scores.mat'), 'scores')
+save(strcat('../data/', dirname, '_reviewText.mat'), 'reviewText')
