@@ -1,3 +1,6 @@
+clear all;
+close all;
+
 dirname = 'video_surveillance'
 files = dir(strcat('../data/AmazonReviews/', dirname, '/*.json'))
 data = []
