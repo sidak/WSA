@@ -1,9 +1,12 @@
-dirname = 'laptops'
-files = dir(strcat('../raw/AmazonReviews/', dirname, '/*.json'))
-data = []
+clear all;
+close all;
+
+dirname = 'video_surveillance';
+files = dir(strcat('../data/AmazonReviews/', dirname, '/*.json'));
+data = [];
 
 for file = files'
-    json = loadjson(strcat('../raw/AmazonReviews/', dirname, '/', file.name));
+    json = loadjson(strcat('../data/AmazonReviews/', dirname, '/', file.name));
     reviews = cell2mat(json.Reviews);
     data = cat(1, data, reviews');
 end
@@ -11,5 +14,5 @@ end
 scores = {data.Overall};
 reviewText = {data.Content};
 
-save(strcat('../data/', dirname, '_scores.mat'), 'scores')
-save(strcat('../data/', dirname, '_reviewText.mat'), 'reviewText')
+save(strcat('../mat/', dirname, '_scores.mat'), 'scores')
+save(strcat('../mat/', dirname, '_reviewText.mat'), 'reviewText')
