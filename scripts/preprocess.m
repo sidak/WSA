@@ -1,6 +1,9 @@
-dirname = 'video_surveillance'
-files = dir(strcat('../data/AmazonReviews/', dirname, '/*.json'))
-data = []
+clear all;
+close all;
+
+dirname = 'video_surveillance';
+files = dir(strcat('../data/AmazonReviews/', dirname, '/*.json'));
+data = [];
 
 for file = files'
     json = loadjson(strcat('../data/AmazonReviews/', dirname, '/', file.name));
