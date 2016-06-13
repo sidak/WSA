@@ -14,8 +14,7 @@ close(h)
 % Cleaning the words
 % - Separate words with dot
 % - Separate words like 'youAgain'
-%expression = '[.,()[]{}/:;!?\s]|"';
-expression = '[^a-zA-Z_0-9-'']|'
+expression = '[^a-zA-Z_0-9-.'']|--'
 replace = '\ ';
 
 dim = size(reviewText);
@@ -28,13 +27,17 @@ h = waitbar(0, 'Splitting...')
 counter = len;
 step = 1/counter;
 
-for i = 1:100
+for i = 1:len
     waitbar(step*i, h, sprintf('%.2f%%...', step*i*100))
     text = reviewText(i);
     text = cell2mat(text);
     if not(isempty(text))
+        % Replace dot with an arbitrary special character, e.g. '+', so
+        % that it could be removed afterward
+        expr = regexp(text, '[a-z_0-9]\.([A-Z]|\s)');
+        text(expr+1) = '+';
         text = regexprep(text, expression, replace);
-        % TODO
+        
         current = strsplit(text);
         current = unique(current);
         words = cat(1, words, current');
@@ -45,9 +48,9 @@ end
 close(h)
 
 % Saving the processed data
-%h = waitbar(0, 'Saving data...')
+h = waitbar(0, 'Saving data...')
 
-%save(strcat('../mat/', dirname, '_words.mat'), 'words')
+save(strcat('../mat/', dirname, '_words.mat'), 'words')
 
-%waitbar(100, h, 'Done!')
-%close(h)
+waitbar(100, h, 'Done!')
+close(h)
