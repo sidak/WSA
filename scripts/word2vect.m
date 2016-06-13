@@ -37,7 +37,7 @@ for i = 1:len
         expr = regexp(text, '[a-z_0-9]\.([A-Z]|\s)');
         text(expr+1) = '+';
         text = regexprep(text, expression, replace);
-        
+
         current = strsplit(text);
         current = unique(current);
         words = cat(1, words, current');
