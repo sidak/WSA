@@ -12,8 +12,7 @@ close(h)
 
 % TODO
 % Cleaning the words
-% - Separate words with dot
-% - Separate words like 'youAgain'
+% - maybe separate words like 'youAgain'
 % - better would be to use a map
 
 expression = '[^a-zA-Z_0-9-.'']|--'
@@ -44,7 +43,8 @@ for i = 1:len
 
         current = strsplit(text);
         % Later also try to remove invalid single letter words('e','o','u')
-        current = unique(current);        
+        current = unique(current);
+        
         words = cat(1, words, current');
         words = unique(words);
     end
@@ -55,6 +55,7 @@ close(h)
 % Saving the processed data
 h = waitbar(0, 'Saving data...')
 
-save(strcat('../mat/', dirname, '_words.txt'), 'words')
+save(strcat('../mat/', dirname, '_words.mat'), 'words')
+
 waitbar(100, h, 'Done!')
 close(h)
