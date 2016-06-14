@@ -1,4 +1,5 @@
 pdfs/*
 data/*
 mat/*
+scripts/word2vec/*
 *.DS_Store
