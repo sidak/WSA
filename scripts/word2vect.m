@@ -14,6 +14,8 @@ close(h)
 % Cleaning the words
 % - Separate words with dot
 % - Separate words like 'youAgain'
+% - better would be to use a map
+
 expression = '[^a-zA-Z_0-9-.'']|--'
 replace = '\ ';
 
@@ -30,16 +32,19 @@ step = 1/counter;
 for i = 1:len
     waitbar(step*i, h, sprintf('%.2f%%...', step*i*100))
     text = reviewText(i);
+    % Convert it into char vector
     text = cell2mat(text);
     if not(isempty(text))
-        % Replace dot with an arbitrary special character, e.g. '+', so
-        % that it could be removed afterward
-        expr = regexp(text, '[a-z_0-9]\.([A-Z]|\s)');
-        text(expr+1) = '+';
+        % So that matched index should start from position of dot
+        indices = regexp(text, '[a-z_0-9]\.') + 1;
+        
+        % Replace dot with space in these matched patterns
+        text(indices) = ' ';
         text = regexprep(text, expression, replace);
 
         current = strsplit(text);
-        current = unique(current);
+        % Later also try to remove invalid single letter words('e','o','u')
+        current = unique(current);        
         words = cat(1, words, current');
         words = unique(words);
     end
@@ -50,7 +55,6 @@ close(h)
 % Saving the processed data
 h = waitbar(0, 'Saving data...')
 
-save(strcat('../mat/', dirname, '_words.mat'), 'words')
-
+save(strcat('../mat/', dirname, '_words.txt'), 'words')
 waitbar(100, h, 'Done!')
 close(h)
