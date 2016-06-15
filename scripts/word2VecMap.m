@@ -10,11 +10,6 @@ load(strcat('../mat/', dirname, '_reviewText.mat'));
 waitbar(100, h, 'Done!')
 close(h)
 
-% TODO
-% Cleaning the words
-% - Separate words with dot
-% - Separate words like 'youAgain'
-
 expression = '[^a-zA-Z_0-9-.'']|--'
 replace = '\ ';
 
