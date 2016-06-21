@@ -15,7 +15,7 @@ end
 if nargin<6
     weights=ones(n,1)/n;
 else
-    weigths=reshape(weights,n,1);
+    weights=reshape(weights,n,1);
 end
 
 K=exp(-lambda*M);
