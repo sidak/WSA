@@ -6,7 +6,7 @@ load(strcat('../mat/', fname, '_wordMap.mat'));
 
 keys = wordMap.keys;
 values = wordMap.values;
-I = cell2mat(values) > 1;
+I = cell2mat(values) > 10;
 keys = keys(I);
 
 wordsRed = keys';

@@ -30,13 +30,19 @@ MVP=[];
 UKv=K*(bsxfun(@rdivide,C,(sum(K))'));
 u=bsxfun(@ldivide,UKv,exp(log(UKv)*weights));
 
+h = waitbar(0, 'Computing...');
+step = 1/iterations;
+
 while count<iterations && diff>tolerance
+    waitbar(step*count, h, sprintf('%.2f%%...', step*count*100))
     Ukv=u.*(K*(C./(K'*u)));
     matrixVector=matrixVector+2;
     count=count+1;
     u=bsxfun(@times,u,exp(log(UKv)*weights))./UKv;
     matrixVector=matrixVector+1;
-    MVP=[MVP,matrixVecotr];
+    MVP=[MVP,matrixVector];
 end
+
+close(h)
 
 c=mean(UKv,2);

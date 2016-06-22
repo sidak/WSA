@@ -54,3 +54,6 @@ close(h)
 
 m1 = sparse(I1, J1, V1, len_x1, len_y);
 %m2 = sparse(I5, J5, V5, len_x5, len_y);
+
+save(strcat('../mat/', fname, '_score1.mat'), 'm1');
+%save(strcat('../mat/', fname, '_score5.mat'), 'm5');
