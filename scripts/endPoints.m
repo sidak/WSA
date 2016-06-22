@@ -1,9 +1,9 @@
 clear all;
 close all;
 
-dirname = 'laptops';
-load(strcat('../mat/', dirname, '_reviewText.mat'));
-load(strcat('../mat/', dirname, '_scores.mat'));
+fname = 'laptops';
+load(strcat('../mat/', fname, '_reviewText.mat'));
+load(strcat('../mat/', fname, '_scores.mat'));
 
 keySet = [1, 2, 3, 4, 5];
 
@@ -43,4 +43,4 @@ close(h)
 valueSet = [{X1}, {X2}, {X3}, {X4}, {X5}];
 scoreMap = containers.Map(keySet, valueSet);
 
-save(strcat('../mat/', dirname, '_scoreMap.mat'), 'scoreMap')
+save(strcat('../mat/', fname, '_scoreMap.mat'), 'scoreMap')

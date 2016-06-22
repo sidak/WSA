@@ -4,8 +4,8 @@ close all;
 % Loading data
 h = waitbar(0, 'Loading data...')
 
-dirname = 'laptops';
-load(strcat('../mat/', dirname, '_reviewText.mat'));
+fname = 'laptops';
+load(strcat('../mat/', fname, '_reviewText.mat'));
 
 waitbar(100, h, 'Done!')
 close(h)
@@ -59,7 +59,7 @@ close(h)
 h = waitbar(0, 'Saving data...')
 
 keySet = keys(wordMap);
-save(strcat('../mat/', dirname, '_keys.mat'), 'keySet')
-save(strcat('../mat/', dirname, '_wordMap.mat'), 'wordMap')
+save(strcat('../mat/', fname, '_keys.mat'), 'keySet')
+save(strcat('../mat/', fname, '_wordMap.mat'), 'wordMap')
 waitbar(100, h, 'Done!')
 close(h)

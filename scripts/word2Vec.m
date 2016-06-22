@@ -4,8 +4,8 @@ close all;
 % Loading data
 h = waitbar(0, 'Loading data...')
 
-dirname = 'laptops';
-load(strcat('../mat/', dirname, '_reviewText.mat'));
+fname = 'laptops';
+load(strcat('../mat/', fname, '_reviewText.mat'));
 
 waitbar(100, h, 'Done!')
 close(h)
@@ -55,7 +55,7 @@ close(h)
 % Saving the processed data
 h = waitbar(0, 'Saving data...')
 
-save(strcat('../mat/', dirname, '_words.mat'), 'words')
+save(strcat('../mat/', fname, '_words.mat'), 'words')
 
 waitbar(100, h, 'Done!')
 close(h)
