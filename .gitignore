@@ -4,4 +4,5 @@ mat/*
 scripts/word2vec/*
 scripts/toolbox_general/*
 scripts/toolbox_signal/*
+scripts/test_ellipsoids/*
 *.DS_Store
