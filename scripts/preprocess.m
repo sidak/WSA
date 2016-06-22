@@ -1,7 +1,7 @@
 clear all;
 close all;
 
-dirname = 'video_surveillance';
+dirname = 'laptops';
 files = dir(strcat('../data/AmazonReviews/', dirname, '/*.json'));
 data = [];
 
