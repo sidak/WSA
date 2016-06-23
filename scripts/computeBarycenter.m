@@ -63,8 +63,10 @@ T = 1:len_y;
 %save(strcat('../mat/', fname, '_score5.mat'), 'm5');
 
 % Compute the barycenter of reviews with score 1
-load('../mat/laptops_dict.mat');
-load('../mat/laptops_score1.mat');
+M_laptops = load('../mat/laptops_distMatrix.mat');
+m1 = load('../mat/laptops_score1.mat');
+M_laptops = M_laptops.M_laptops;
+m1 = m1.m1;
 m = m1';
 c = wassersteinBarycenter(m, M_laptops, 10000, 100, false, 1e-8)
 save('../mat/laptops_barycenter1.mat', 'c');
