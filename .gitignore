@@ -5,5 +5,4 @@ scripts/word2vec/*
 scripts/toolbox_general/*
 scripts/toolbox_signal/*
 scripts/test_ellipsoids/*
-scripts/add_K.m
 *.DS_Store
