@@ -75,7 +75,7 @@ while compt<iterations && differ>toleranceDifference,
     
     if mod(compt,5)==1,
         differ=sum(std(UKv,1,2))    
-        compt        
+        compt      
         c=mean(UKv,2);
 %         subaxis(6,10,6,2,5,5,'Spacing', 0.005, 'Padding', 0, 'Margin', 0.005)
 %         imagesc(reshape(c,round(sqrt(length(c))),round(sqrt(length(c)))));        
