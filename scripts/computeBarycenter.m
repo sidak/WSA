@@ -24,23 +24,23 @@ V1 = [];
 %V5 = [];
 T = 1:len_y;
 
-h = waitbar(0, 'Constructing...');
-counter = len_x1;
+%h = waitbar(0, 'Constructing...');
+%counter = len_x1;
 %counter = len_x5;
-step = 1/counter;
+%step = 1/counter;
 
-for i = 1:len_x1
-    waitbar(step*i, h, sprintf('%.2f%%...', step*i*100))
-    b = bagOfWords(s1(i));
-    current = cellfun(@(x) isKey(b, x), dict);
-    J_current = T(current);
-    I_current = repmat([i], 1, length(J_current));
-    I1 = [I1 I_current];
-    J1 = [J1 J_current];
-    for j = J_current
-        V1 = [V1 b(cell2mat(dict(j)))];
-    end
-end
+%for i = 1:len_x1
+%    waitbar(step*i, h, sprintf('%.2f%%...', step*i*100))
+%    b = bagOfWords(s1(i));
+%    current = cellfun(@(x) isKey(b, x), dict);
+%    J_current = T(current);
+%    I_current = repmat([i], 1, length(J_current));
+%    I1 = [I1 I_current];
+%    J1 = [J1 J_current];
+%    for j = J_current
+%        V1 = [V1 b(cell2mat(dict(j)))];
+%    end
+%end
 %for i = 1:len_x5
 %    waitbar(step*i, h, sprintf('%.2f%%...', step*i*100))
 %    b = bagOfWords(s5(i));
@@ -54,10 +54,16 @@ end
 %    end
 %end
 
-close(h)
+%close(h)
 
 %m1 = sparse(I1, J1, V1, len_x1, len_y);
 %m5 = sparse(I5, J5, V5, len_x5, len_y);
 
 %save(strcat('../mat/', fname, '_score1.mat'), 'm1');
 %save(strcat('../mat/', fname, '_score5.mat'), 'm5');
+
+% Compute the barycenter of reviews with score 1
+load('../mat/laptops_dict.mat');
+load('../mat/laptops_score1.mat');
+m = m1';
+c = wassersteinBarycenter(m, M_laptops, 10000, 100, false, 1e-8)

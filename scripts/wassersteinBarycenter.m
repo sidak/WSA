@@ -1,4 +1,4 @@
-function [c,MVP,objectives] = wassersteinBarycenter(C,M,iterations,lambda,useGPU,toleranceDifference,weights)
+function [c,MVP,objectives] = wassersteinBarycenter(C,M,iterations,lambda,useGPU,tolerance,weights)
 % INPUT:
 % C = d x N , N histograms of size d
 % M = ground metric.
@@ -20,7 +20,7 @@ if nargin<5,
 end
 
 if nargin<6,
-    toleranceDifference=1e-3;
+    tolerance=1e-3;
 end
 
 if nargin<7,
@@ -40,8 +40,8 @@ end
 
 K(K<1e-300)=1e-300;
 
-compt=0;
-differ=inf;
+count=0;
+diff=inf;
 objectives=[];
 matrixVector=0;
 MVP=[];
@@ -53,14 +53,14 @@ UKv=K*(bsxfun(@rdivide,C,(sum(K))')); % first iteration, U = ones.
 u=bsxfun(@ldivide,UKv,exp(log(UKv)*weights));
 
 % loop below 
-while compt<iterations && differ>toleranceDifference,
+while count<iterations && diff>tolerance,
     % projection sur les N contraintes de marge fixees
     % le U ci-dessous represente un D(u), i.e. 
     % UKv represente la matrice des D(u_k) K v_k.        
     UKv=u.*(K*(C./(K'*u)));
     matrixVector=matrixVector+2;
     %MVP=[MVP,matrixVector];
-    compt=compt+1;    
+    count=count+1;    
     % projection sur l'egalite des N marges variables    
     %u=u.*repmat(exp(mean(log(UKv),2)),1,size(C,2))./UKv;      
     u=bsxfun(@times,u,exp(log(UKv)*weights))./UKv;          
@@ -70,12 +70,12 @@ while compt<iterations && differ>toleranceDifference,
     
     
     % what follows has only a marginal use and can be commented out.
-    differ=sum(std(UKv,1,2))
-    objectives=[objectives,differ];
+    diff=sum(std(UKv,1,2))
+    objectives=[objectives,diff];
     
-    if mod(compt,5)==1,
-        differ=sum(std(UKv,1,2))    
-        compt      
+    if mod(count,5)==1,
+        diff=sum(std(UKv,1,2))    
+        count
         c=mean(UKv,2);
 %         subaxis(6,10,6,2,5,5,'Spacing', 0.005, 'Padding', 0, 'Margin', 0.005)
 %         imagesc(reshape(c,round(sqrt(length(c))),round(sqrt(length(c)))));        
