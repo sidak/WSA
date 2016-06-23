@@ -24,36 +24,37 @@ V1 = [];
 %V5 = [];
 
 h = waitbar(0, 'Constructing...');
-counter = len_y;
+%counter = len_x1;
+counter = len_x5;
 step = 1/counter;
 
-for i = 1:len_x1
-    waitbar(step*i, h, sprintf('%.2f%%...', step*i*100))
-    b = bagOfWords(s1(i));
-    for j = 1:len_y
-        if isKey(b, cell2mat(dict(j)))
-            I1 = [I1 i];
-            J1 = [J1 j];
-            V1 = [V1 b(cell2mat(dict(j)))];
-        end
-    end
-end
-%for i = 1:len_x5
+%for i = 1:len_x1
 %    waitbar(step*i, h, sprintf('%.2f%%...', step*i*100))
-%    b = bagOfWords(s5(i));
+%    b = bagOfWords(s1(i));
 %    for j = 1:len_y
 %        if isKey(b, cell2mat(dict(j)))
-%            I5 = [I5 i];
-%            J5 = [J5 j];
-%            V5 = [V5 b(cell2mat(dict(j)))];
+%            I1 = [I1 i];
+%            J1 = [J1 j];
+%            V1 = [V1 b(cell2mat(dict(j)))];
 %        end
 %    end
 %end
+for i = 1:len_x5
+    waitbar(step*i, h, sprintf('%.2f%%...', step*i*100))
+    b = bagOfWords(s5(i));
+    for j = 1:len_y
+        if isKey(b, cell2mat(dict(j)))
+            I5 = [I5 i];
+            J5 = [J5 j];
+            V5 = [V5 b(cell2mat(dict(j)))];
+        end
+    end
+end
 
 close(h)
 
-m1 = sparse(I1, J1, V1, len_x1, len_y);
-%m2 = sparse(I5, J5, V5, len_x5, len_y);
+%m1 = sparse(I1, J1, V1, len_x1, len_y);
+m2 = sparse(I5, J5, V5, len_x5, len_y);
 
-save(strcat('../mat/', fname, '_score1.mat'), 'm1');
-%save(strcat('../mat/', fname, '_score5.mat'), 'm5');
+%save(strcat('../mat/', fname, '_score1.mat'), 'm1');
+save(strcat('../mat/', fname, '_score5.mat'), 'm5');
