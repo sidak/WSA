@@ -1,4 +1,4 @@
-function [c,MVP,objectives] = wassersteinBarycenter(C,M,iterations,lambda,useGPU,tolerance,weights)
+function [c,count] = wassersteinBarycenter(C,M,iterations,lambda,useGPU,tolerance,weights)
 % INPUT:
 % C = d x N , N histograms of size d
 % M = ground metric.
