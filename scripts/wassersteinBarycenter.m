@@ -30,7 +30,6 @@ else
 end
 
 
-
 K=exp(-lambda*M);
 
 if useGPU    
@@ -53,7 +52,7 @@ UKv=K*(bsxfun(@rdivide,C,(sum(K))')); % first iteration, U = ones.
 u=bsxfun(@ldivide,UKv,exp(log(UKv)*weights));
 
 % loop below 
-while count<iterations && diff>tolerance,
+while count<iterations && diff>tolerance
     % projection sur les N contraintes de marge fixees
     % le U ci-dessous represente un D(u), i.e. 
     % UKv represente la matrice des D(u_k) K v_k.        
@@ -73,8 +72,7 @@ while count<iterations && diff>tolerance,
     diff=sum(std(UKv,1,2))
     objectives=[objectives,diff];
     
-    if mod(count,5)==1,
-        diff=sum(std(UKv,1,2))    
+    if mod(count,5)==1  
         count
         c=mean(UKv,2);
 %         subaxis(6,10,6,2,5,5,'Spacing', 0.005, 'Padding', 0, 'Margin', 0.005)
