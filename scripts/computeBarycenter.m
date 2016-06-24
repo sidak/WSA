@@ -72,7 +72,7 @@ m1 = m1.m1;
 m5 = m5.m5;
 % Normalize by rows
 m1 = spdiags(spfun(@(x) 1./x, sum(m1, 2)), 0, size(m1, 1), size(m1, 1)) * m1;
-m5 = spdiags(spfun(@(x) 1./x, sum(m1, 5)), 0, size(m5, 1), size(m5, 1)) * m5;
+m5 = spdiags(spfun(@(x) 1./x, sum(m5, 2)), 0, size(m5, 1), size(m5, 1)) * m5;
 m1 = m1';
 m5 = m5';
 [c1, count1] = wassersteinBarycenter(m1, M_laptops, 10000, 20, false, 1e-8);
