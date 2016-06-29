@@ -25,7 +25,7 @@ step = 1/counter;
 
 for i = 1:len_x
     waitbar(step*i, h, sprintf('%.2f%%...', step*i*100))
-    b = bagOfWords(s1(i));
+    b = bagOfWords(s(i));
     current = cellfun(@(x) isKey(b, x), dict);
     J_current = T(current);
     I_current = repmat([i], 1, length(J_current));
