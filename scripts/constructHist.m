@@ -41,6 +41,6 @@ close(h)
 m = sparse(I, J, V, len_x, len_y);
 
 str = int2str(label);
-save(strcat('../mat/', fname, '_score', str, '.mat'), strcat('m', str));
+save(strcat('../mat/', fname, '_score', str, '.mat'), 'm');
 
 end
