@@ -1,4 +1,4 @@
-function m = computeVec(fname, label)
+function m = constructHist(fname, label)
 
 %fname = 'laptops';
 load(strcat('../mat/', fname, '_scoreMap.mat'));
