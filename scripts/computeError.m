@@ -1,5 +1,7 @@
-function score = computeError(h, geodesic)
-dist = pdist2(h, geodesic, 'cosine');
-proj = find(dist==min(dist));
+function [err, score] = computeError(h, geodesic, K, U, lambda)
+D = sinkhornTransport(h', geodesic', K, U, lambda);
+D = D.^2;
+proj = find(D==min(D));
+err = min(D);
 score = (proj-1)/10 + 1;
 end
