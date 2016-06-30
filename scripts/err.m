@@ -19,7 +19,7 @@ U = K.*M;
 load(strcat('../mat/', fname, '_geodesic.mat'));
 geodesic = bcenters;
 
-for i = 5
+for i = 1:5
     errors = [];
     scores = [];
 

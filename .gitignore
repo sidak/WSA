@@ -1,5 +1,6 @@
 pdfs/*
 data/*
+fig/*
 mat/*
 scripts/word2vec/*
 scripts/toolbox_general/*
