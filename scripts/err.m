@@ -17,26 +17,32 @@ K(K<1e-200)=1e-200;
 U = K.*M;
 
 load(strcat('../mat/', fname, '_geodesic.mat'));
-load(strcat('../mat/', fname, '_score1.mat'));
-m1 = spdiags(spfun(@(x) 1./x, sum(m1, 2)), 0, size(m1, 1), size(m1, 1)) * m1;
 geodesic = bcenters;
 
-errors = [];
-scores = [];
+for i = 1
+    errors = [];
+    scores = [];
 
-bar = waitbar(0, 'Computing...');
+    bar = waitbar(0, 'Computing...');
 
-counter = size(m1, 1);
-step = 1/counter;
+    load(strcat('../mat/', fname, '_score', int2str(i), '.mat'));
+    m = spdiags(spfun(@(x) 1./x, sum(m, 2)), 0, size(m, 1), size(m, 1)) * m;
 
-for i = 1:counter
-    waitbar(step*i, bar, sprintf('%.2f%%...', step*i*100));
-    h = m1(i, :);
-    h = full(h);
-    h = normalize(h);
-    [err, score] = computeError(h, geodesic, K, U, lambda);
-    errors = [errors err];
-    scores = [scores score];
+    counter = size(m, 1);
+    step = 1/counter;
+    
+    for j = 1:counter
+        waitbar(step*j, bar, sprintf('%.2f%%...', step*j*100));
+        h = m(j, :);
+        h = full(h);
+        h = normalize(h);
+        [err, score] = computeError(h, geodesic, K, U, lambda);
+        errors = [errors err];
+        scores = [scores score];
+    end
+    
+    close(bar);
+    
+    save(strcat('../mat/', fname, '_score', int2str(i), '_err.mat'), 'errors');
+    save(strcat('../mat/', fname, '_score', int2str(i), '_proj.mat'), 'scores');
 end
-
-close(bar);
