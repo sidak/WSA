@@ -19,13 +19,14 @@ U = K.*M;
 load(strcat('../mat/', fname, '_geodesic.mat'));
 geodesic = bcenters;
 
-for i = 1
+for i = 5
     errors = [];
     scores = [];
 
     bar = waitbar(0, 'Computing...');
 
     load(strcat('../mat/', fname, '_score', int2str(i), '.mat'));
+    m = m(sum(m, 2) ~= 0, :);
     m = spdiags(spfun(@(x) 1./x, sum(m, 2)), 0, size(m, 1), size(m, 1)) * m;
 
     counter = size(m, 1);
