@@ -35,7 +35,7 @@ for i = 5
     for j = 1:counter
         waitbar(step*j, bar, sprintf('%.2f%%...', step*j*100));
         h = m(j, :);
-        h = full(h);
+        %h = full(h);
         h = normalize(h);
         [err, score] = computeError(h, geodesic, K, U, lambda);
         errors = [errors err];
