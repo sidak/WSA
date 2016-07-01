@@ -7,5 +7,6 @@ scripts/toolbox_general/*
 scripts/toolbox_signal/*
 scripts/test_ellipsoids/*
 scripts/app_K.m
+scripts/entropy.m
 scripts/fig.m
 *.DS_Store
