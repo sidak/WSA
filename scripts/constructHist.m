@@ -3,7 +3,7 @@ function m = constructHist(fname, label)
 %fname = 'laptops';
 load(strcat('../mat/', fname, '_scoreMap.mat'));
 dict = load(strcat('../mat/', fname, '_dictRed.mat'));
-vec = load(strcat('../mat/', fname, '_vecRed.mat'));
+%vec = load(strcat('../mat/', fname, '_vecRed.mat'));
 dict = dict.dictRed;
 %vec = vec.vecRed;
 
