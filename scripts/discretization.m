@@ -18,8 +18,6 @@ for t = 0.025:0.025:0.975
     %counts = [counts count];
 end
 
-close(h);
-
 bcenters = [c1'; bcenters; c5'];
 save('../mat/laptops_geodesic.mat', 'bcenters');
 %save('../mat/laptops_counts.mat', 'counts');
