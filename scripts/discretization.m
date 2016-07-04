@@ -11,7 +11,7 @@ ends = [c1 c5];
 %counts = [];
 
 for t = 0.025:0.025:0.975
-    weights = [t 1-t];
+    weights = [1-t t];
     center = wassersteinBarycenter(ends, M, 10000, 20, false, 1e-4, weights);
     center = center';
     bcenters = [bcenters; center];

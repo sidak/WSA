@@ -18,7 +18,7 @@ fname = 'laptops';
 % save('../mat/laptops_distMatrixEuc.mat', 'M_euc');
 
 % Constructing histograms
-for i = 3:5;
+for i = 1:5;
     constructHist(fname, i);
 end
 
