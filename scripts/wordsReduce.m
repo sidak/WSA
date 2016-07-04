@@ -8,6 +8,9 @@ keys = wordMap.keys;
 values = wordMap.values;
 I = cell2mat(values) > 10;
 keys = keys(I);
+values = values(I);
+I = cell2mat(values) < 5000;
+keys = keys(I);
 
 % Remove stopwords
 stopwords_cellstring={'a', 'about', 'above', 'above', 'across', 'after', ...
