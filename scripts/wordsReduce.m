@@ -50,4 +50,4 @@ J = ~ismember(keys, stopwords_cellstring);
 keys = keys(J);
 
 wordsRed = keys';
-save(strcat('../mat/', fname, '_wordsRed.mat'), 'wordsRed')
+save(strcat('../mat/', fname, '_wordsRed.mat'), 'wordsRed');

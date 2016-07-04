@@ -9,4 +9,5 @@ scripts/test_ellipsoids/*
 scripts/app_K.m
 scripts/entropy.m
 scripts/fig.m
+scripts/debug.m
 *.DS_Store
