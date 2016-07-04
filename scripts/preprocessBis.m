@@ -1,8 +1,8 @@
 clear all;
 close all;
 
-% fname = 'laptops';
-% 
+fname = 'laptops';
+ 
 % load(strcat('../mat/', fname, '_wordsRed.mat'));
 % 
 % cd word2vec/;
