@@ -2,8 +2,10 @@ clear all;
 close all;
 
 % Loading data
-load('../mat/laptops_barycenter1_cos.mat');
-load('../mat/laptops_barycenter5_cos.mat');
+%load('../mat/laptops_barycenter1_cos.mat');
+%load('../mat/laptops_barycenter5_cos.mat');
+load('../mat/laptops_barycenter1_euc.mat');
+load('../mat/laptops_barycenter5_euc.mat');
 %load('../mat/laptops_distMatrixCos.mat');
 load('../mat/laptops_distMatrixEuc.mat');
 %M = M_cos/median(M_cos(:));
