@@ -2,11 +2,11 @@ clear all;
 close all;
 
 fname = 'laptops';
-load(strcat('../mat/', fname, '_distMatrix.mat'));
+load(strcat('../mat/', fname, '_distMatrixCos.mat'));
 
 normalize = @(p) p/sum(p(:));
 
-M = M_laptops/median(M_laptops(:));
+M = M_cos/median(M_cos(:));
 
 % Set lambda
 lambda = 20;
@@ -19,7 +19,7 @@ U = K.*M;
 load(strcat('../mat/', fname, '_geodesic.mat'));
 geodesic = bcenters;
 
-for i = 4:5
+for i = 3:5
     errors = [];
     scores = [];
 

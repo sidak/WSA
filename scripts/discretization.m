@@ -2,10 +2,10 @@ clear all;
 close all;
 
 % Loading data
-load('../mat/laptops_barycenter1.mat');
-load('../mat/laptops_barycenter5.mat');
-load('../mat/laptops_distMatrix.mat');
-M = M_laptops/median(M_laptops(:));
+load('../mat/laptops_barycenter1_cos.mat');
+load('../mat/laptops_barycenter5_cos.mat');
+load('../mat/laptops_distMatrixCos.mat');
+M = M_cos/median(M_cos(:));
 bcenters = [];
 ends = [c1 c5];
 %counts = [];
