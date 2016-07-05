@@ -4,8 +4,10 @@ close all;
 % Loading data
 load('../mat/laptops_barycenter1_cos.mat');
 load('../mat/laptops_barycenter5_cos.mat');
-load('../mat/laptops_distMatrixCos.mat');
-M = M_cos/median(M_cos(:));
+%load('../mat/laptops_distMatrixCos.mat');
+load('../mat/laptops_distMatrixEuc.mat');
+%M = M_cos/median(M_cos(:));
+M = M_euc/median(M_euc(:));
 bcenters = [];
 ends = [c1 c5];
 %counts = [];
@@ -19,5 +21,6 @@ for t = 0.025:0.025:0.975
 end
 
 bcenters = [c1'; bcenters; c5'];
-save('../mat/laptops_geodesic.mat', 'bcenters');
+%save('../mat/laptops_geodesic_cos.mat', 'bcenters');
+save('../mat/laptops_geodesic_euc.mat', 'bcenters');
 %save('../mat/laptops_counts.mat', 'counts');

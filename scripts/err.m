@@ -2,11 +2,13 @@ clear all;
 close all;
 
 fname = 'laptops';
-load(strcat('../mat/', fname, '_distMatrixCos.mat'));
+%load(strcat('../mat/', fname, '_distMatrixCos.mat'));
+load(strcat('../mat/', fname, '_distMatrixEuc.mat'));
 
 normalize = @(p) p/sum(p(:));
 
-M = M_cos/median(M_cos(:));
+%M = M_cos/median(M_cos(:));
+M = M_euc/median(M_euc(:));
 
 % Set lambda
 lambda = 20;
@@ -16,10 +18,11 @@ K = exp(-lambda*M);
 K(K<1e-200)=1e-200;
 U = K.*M;
 
-load(strcat('../mat/', fname, '_geodesic.mat'));
+%load(strcat('../mat/', fname, '_geodesic_cos.mat'));
+load(strcat('../mat/', fname, '_geodesic_euc.mat'));
 geodesic = bcenters;
 
-for i = 3:5
+for i = 1:5
     errors = [];
     scores = [];
 
@@ -45,6 +48,8 @@ for i = 3:5
     
     close(bar);
     
-    save(strcat('../mat/', fname, '_score', int2str(i), '_err.mat'), 'errors');
-    save(strcat('../mat/', fname, '_score', int2str(i), '_proj.mat'), 'scores');
+    %save(strcat('../mat/', fname, '_score', int2str(i), '_err_cos.mat'), 'errors');
+    %save(strcat('../mat/', fname, '_score', int2str(i), '_proj_cos.mat'), 'scores');
+    save(strcat('../mat/', fname, '_score', int2str(i), '_err_euc.mat'), 'errors');
+    save(strcat('../mat/', fname, '_score', int2str(i), '_proj_euc.mat'), 'scores');
 end
