@@ -17,9 +17,10 @@ lambda = 20;
 %K(K<1e-200)=1e-200;
 %U = K.*M;
 
+len = length(c1);
 pAD = myAD(c1);
-outAD = func(pAD, c5, 0.025, M, lambda);
-dfAD=getderivs(outAD)
+outAD = func(pAD, c5, 0.025, M, lambda)
+%dfAD = getderivs(outAD)
 
 function fval = func(a, b, r, M, lambda)
     weights = [1-r r];
