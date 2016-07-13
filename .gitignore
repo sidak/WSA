@@ -11,4 +11,5 @@ scripts/app_K.m
 scripts/entropy.m
 scripts/fig.m
 scripts/debug.m
+scripts/adTest.m
 *.DS_Store
