@@ -1,4 +1,4 @@
-function [c,count] = wassersteinBarycenter(C,M,iterations,lambda,useGPU,tolerance,weights)
+function c = wassersteinBarycenter(C,M,iterations,lambda,useGPU,tolerance,weights)
 % INPUT:
 % C = d x N , N histograms of size d
 % M = ground metric.
@@ -73,7 +73,7 @@ while count<iterations && diff>tolerance
     objectives=[objectives,diff];
     
     if mod(count,5)==1  
-        count
+        %count
         c=mean(UKv,2);
 %         subaxis(6,10,6,2,5,5,'Spacing', 0.005, 'Padding', 0, 'Margin', 0.005)
 %         imagesc(reshape(c,round(sqrt(length(c))),round(sqrt(length(c)))));        

@@ -18,7 +18,7 @@ lambda = 20;
 %U = K.*M;
 
 len = length(c1);
-pAD = myMatrixAD(c1);
+pAD = myAD(c1);
 outAD = func(pAD, c5, 0.025, M, lambda)
 %dfAD = getderivs(outAD)
 
